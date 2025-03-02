@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:20:29 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/01 15:59:49 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/02 15:32:02 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include <stdlib.h>
+
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 char	*ft_strdup(const char *s1);
 int     ft_check_characters(char **map, int line_count, int line_len);

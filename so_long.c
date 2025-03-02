@@ -6,12 +6,19 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:13:03 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/01 23:56:12 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/02 23:39:19 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <mlx.h>
+
+int key_handler(int keycode)
+{
+    if (keycode == 65307)
+        exit(0);
+    return (0);
+}
 
 int main ()
 {
@@ -20,12 +27,21 @@ int main ()
     char    *line;
     int     i;
     int     line_count;
-    void	*mlx_ptr;
-    void	*mlx;
+    
+    void *mlx_ptr;
+    void *win_ptr;
+    void *img_ptr;
+    int width, height;
 
-    mlx = mlx_init();
-    mlx_ptr = mlx_new_window(mlx, 800, 600, "Hello, MLX!");
-    mlx_loop(mlx);
+    mlx_ptr = mlx_init();
+
+    win_ptr = mlx_new_window(mlx_ptr, 800, 600, "Eid mobark");
+    img_ptr = mlx_xpm_file_to_image(mlx_ptr, "eid_fitr.xpm", &width, &height);
+    mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, 0, 0);
+    mlx_key_hook(win_ptr, key_handler, NULL);
+
+    // mlx_key_hook(win_ptr, key_handler, NULL);
+	mlx_loop(mlx_ptr);
 
     fd = open("maps/map.ber", O_RDONLY);
     map = NULL;
