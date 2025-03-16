@@ -2,11 +2,10 @@ NAME = so_long
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror
 
 SRCS = so_long.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
-		src/parse_map.c src/utils.c
-		
+		src/parse_map.c src/utils.c src/fill_map.c src/keys_map.c src/flood_fill.c
 
 OBJS = $(SRCS:.c=.o)
 
