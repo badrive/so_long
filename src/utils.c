@@ -6,13 +6,14 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:57:11 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/16 01:50:23 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/17 01:32:18 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-void	ft_error(void)
+void	ft_error(t_data *game)
 {
 	write(1, "Error\n", 6);
+	ft_free(game);
 	exit(1);
 }

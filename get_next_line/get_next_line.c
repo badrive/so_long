@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 17:23:03 by bfaras            #+#    #+#             */
-/*   Updated: 2024/12/17 14:33:12 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/18 00:58:09 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,12 @@ char	*get_next_line(int fd)
 	ssize_t		bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		ft_free(&stash, NULL);
+		ft_free(&buffer, NULL);
+		ft_free(&tmp, NULL);
 		return (NULL);
+	}
 	buffer = malloc(((size_t)BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
