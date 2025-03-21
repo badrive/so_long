@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:20:29 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/18 15:16:35 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/21 00:42:03 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "get_next_line/get_next_line.h"
+# include "printf/ft_printf.h"
 # include <limits.h>
 # include <stdarg.h>
 # include <stdint.h>
@@ -45,6 +46,7 @@ typedef struct s_data
 	void	*img_exit;
 }			t_data;
 
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		*ft_strdup(const char *s1);
 int			ft_check_characters(t_data *game, int line_count, int line_len);
 int			ft_check_line_lengths(t_data *game, char **map, int line_count);

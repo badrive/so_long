@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 13:32:52 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/18 15:20:31 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/21 00:10:11 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	move_player(t_data *game, int new_x, int new_y)
 	mlx_put_image_to_window(game->mlx, game->win, game->img_player,
 			game->player_x * TILE_SIZE, game->player_y * TILE_SIZE);
 	game->moves++;
-	printf("Moves: %d\n", game->moves);
+	ft_printf("Moves: %d\n", game->moves);
 }
 
 int	key_handler(int keycode, t_data *game)

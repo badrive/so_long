@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:13:03 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/20 00:44:44 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/21 00:42:08 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,6 @@ int	calculate_map_height(t_data *game, const char *map_file)
 	game->map_height = 0;
 	while ((line = get_next_line(fd)))
 	{
-		// if (line[0] == '\n' || line[0] == '\0')
-		// {
-		// 	printf("hello\n");
-		// 	ft_error(game);
-		// }
-		// printf("-----%s-----\n",line);
 		game->map_height++;
 		free(line);
 	}
@@ -179,8 +173,6 @@ int	load_map(t_data *game, const char *map_file)
 {
 	if (!calculate_map_height(game, map_file))
 	{
-		ft_free(game);
-		return (0);
 	}
 	if (!allocate_map(game))
 	{
@@ -216,8 +208,14 @@ int init_mlx(t_data *game)
 
 void	start_game(t_data *game)
 {
-	// ft_check(game, game->map_height);
-	// ft_fill(game);
+	ft_check(game, game->map_height);
+	
+	if (!init_mlx(game))
+	{
+		ft_free(game);
+		exit(1);
+	}
+	ft_fill(game);
 	mlx_hook(game->win, KeyPress, KeyPressMask, key_handler, game);
 	mlx_loop(game->mlx);
 }
@@ -226,10 +224,10 @@ int	validate_args(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		write(1, "ARG_ERROR\n", 11);
+		write(1, "ERROR\n", 6);
 		return (0);
 	}
-	if (strncmp(av[1] + strlen(av[1]) - 4, ".ber", 4) != 0)
+	if (ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".ber", 4) != 0)
 		return (0);
 	return (1);
 }
@@ -241,11 +239,7 @@ int	setup_game(t_data *game, const char *map_file)
 		ft_free(game);		
 		return (0);
 	}
-	if (!init_mlx(game))
-	{
-		ft_free(game);
-		return (0);
-	}
+
 	return (1);
 }
 
@@ -258,11 +252,8 @@ int	main(int ac, char **av)
 	game = malloc(sizeof(t_data));
 	if (!game)
 		return (1);
+
 	init_game(game);
-
-	ft_check(game, game->map_height);
-	ft_fill(game);
-
 	if (!setup_game(game, av[1]))
 	{
 		ft_free(game);

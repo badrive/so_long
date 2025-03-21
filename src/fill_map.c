@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 16:03:48 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/17 23:17:08 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/20 23:43:33 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void ft_fill(t_data *game)
     i = 0;
     j = 0;
 
-    // Destroy existing images if they exist
     if (game->img_wall)
         mlx_destroy_image(game->mlx, game->img_wall);
     if (game->img_floor)
@@ -34,13 +33,15 @@ void ft_fill(t_data *game)
     if (game->img_exit)
         mlx_destroy_image(game->mlx, game->img_exit);
 
-    // Load new images
     game->img_wall = mlx_xpm_file_to_image(game->mlx, "textures/stone.xpm", &width, &height);
     game->img_player = mlx_xpm_file_to_image(game->mlx, "textures/sonic.xpm", &width, &height);
     game->img_collectible = mlx_xpm_file_to_image(game->mlx, "textures/coin.xpm", &width, &height);
     game->img_exit = mlx_xpm_file_to_image(game->mlx, "textures/exit.xpm", &width, &height);
-
-    // Render the map
+    if(!game->img_wall||!game->img_player||!game->img_collectible||!game->img_exit)
+        {
+            ft_free(game);
+            exit(1);
+        }
     while (i < game->map_height)
     {
         j = 0;

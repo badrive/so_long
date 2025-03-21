@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 23:42:37 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/17 21:28:51 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/20 23:50:54 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ int validate_path(t_data *game)
 {
     flood_fill(game, game->player_x, game->player_y, game->map_clone);
     
-if(game->flood_col != game->collectibles) {
-    printf("Not all collectibles are reachable. Found: %d, Total: %d\n", 
-           game->flood_col, game->collectibles);
+if(game->flood_col != game->collectibles)
+{
+    ft_error(game);
     return (0);
 }
 if(game->flood_ex != 1) {
-    printf("Exit is not reachable. Found: %d\n", game->flood_ex);
+    ft_error(game);
     return (0);
 }
     int i = 0;
