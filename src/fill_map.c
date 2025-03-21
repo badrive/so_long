@@ -6,21 +6,16 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 16:03:48 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/20 23:43:33 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/21 17:30:12 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 #include <mlx.h>
 
-void ft_fill(t_data *game)
+void ft_clean_and_load_textures(t_data *game)
 {
-    int i;
-    int j;
     int width, height;
-
-    i = 0;
-    j = 0;
 
     if (game->img_wall)
         mlx_destroy_image(game->mlx, game->img_wall);
@@ -37,11 +32,20 @@ void ft_fill(t_data *game)
     game->img_player = mlx_xpm_file_to_image(game->mlx, "textures/sonic.xpm", &width, &height);
     game->img_collectible = mlx_xpm_file_to_image(game->mlx, "textures/coin.xpm", &width, &height);
     game->img_exit = mlx_xpm_file_to_image(game->mlx, "textures/exit.xpm", &width, &height);
-    if(!game->img_wall||!game->img_player||!game->img_collectible||!game->img_exit)
-        {
-            ft_free(game);
-            exit(1);
-        }
+
+    if(!game->img_wall || !game->img_player || !game->img_collectible || !game->img_exit)
+    {
+        ft_free(game);
+        exit(1);
+    }
+}
+
+void ft_render_map(t_data *game)
+{
+    int i;
+    int j;
+
+    i = 0;
     while (i < game->map_height)
     {
         j = 0;
@@ -59,4 +63,10 @@ void ft_fill(t_data *game)
         }
         i++;
     }
+}
+
+void ft_fill(t_data *game)
+{
+    ft_clean_and_load_textures(game);
+    ft_render_map(game);
 }

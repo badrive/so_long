@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 23:42:37 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/20 23:50:54 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/21 16:57:10 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,13 @@ int flood_fill(t_data *game, int x, int y, char **map_clone)
     return (1);
 }
 
-int validate_path(t_data *game)
+void validate_path(t_data *game)
 {
     flood_fill(game, game->player_x, game->player_y, game->map_clone);
-    
-if(game->flood_col != game->collectibles)
-{
-    ft_error(game);
-    return (0);
-}
-if(game->flood_ex != 1) {
-    ft_error(game);
-    return (0);
-}
+    if(game->flood_col != game->collectibles)
+        ft_error(game);
+    if(game->flood_ex != 1)
+        ft_error(game);
     int i = 0;
     while (i < game->map_height)
     {
@@ -56,6 +50,4 @@ if(game->flood_ex != 1) {
     }
     free(game->map_clone);
     game->map_clone = NULL;
-    
-    return (1);
 }
