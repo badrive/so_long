@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:20:29 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/22 23:48:18 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/23 14:17:36 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ int			init_mlx(t_data *game);
 void		start_game(t_data *game);
 int			validate_args(int ac, char **av);
 void		setup_game(t_data *game, const char *map_file);
+int			exit_game(t_data *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 23:34:02 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/22 23:35:55 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/23 22:57:15 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	start_game(t_data *game)
 		exit(1);
 	}
 	ft_fill(game);
+	mlx_hook(game->win, 17, 0, exit_game, game);
 	mlx_hook(game->win, KeyPress, KeyPressMask, key_handler, game);
 	mlx_loop(game->mlx);
 }
@@ -57,9 +58,4 @@ int	validate_args(int ac, char **av)
 	if (ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".ber", 4) != 0)
 		return (0);
 	return (1);
-}
-
-void	setup_game(t_data *game, const char *map_file)
-{
-	load_map(game, map_file);
 }

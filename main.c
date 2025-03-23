@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:13:03 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/22 23:35:13 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/23 22:57:01 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int ac, char **av)
 	if (!game)
 		return (1);
 	init_game(game);
-	setup_game(game, av[1]);
+	load_map(game, av[1]);
 	start_game(game);
 	ft_free(game);
 	return (0);

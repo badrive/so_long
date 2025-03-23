@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 13:32:52 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/22 23:15:07 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/23 13:51:46 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ void	draw_black_rectangle(t_data *game, int x, int y)
 	}
 }
 
-void	exit_game(t_data *game)
+int	exit_game(t_data *game)
 {
 	ft_free(game);
 	exit(0);
+	return (0);
 }
 
 void	move_player(t_data *game, int new_x, int new_y)
