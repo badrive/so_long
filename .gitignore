@@ -1,0 +1,5 @@
+.vscode
+*.o
+*/*.o
+so_long
+a.out
