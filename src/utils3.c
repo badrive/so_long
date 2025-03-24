@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 23:34:02 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/23 22:57:15 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/24 15:57:57 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ int	validate_args(int ac, char **av)
 		return (0);
 	}
 	if (ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".ber", 4) != 0)
-		return (0);
+		return (write(2, "ERROR\n", 6), 0);
 	return (1);
 }

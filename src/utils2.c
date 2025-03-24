@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 23:29:57 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/22 23:41:28 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/24 15:58:51 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	calculate_map_height(t_data *game, const char *map_file)
 
 	fd = open(map_file, O_RDONLY);
 	if (fd < 0)
-		ft_exit(game);
+		ft_error(game);
 	game->map_height = 0;
 	line = get_next_line(fd);
 	while (line)
@@ -73,7 +73,7 @@ void	read_map(t_data *game, const char *map_file)
 	int (fd), (i);
 	fd = open(map_file, O_RDONLY);
 	if (fd < 0)
-		ft_exit(game);
+		ft_error(game);
 	i = 0;
 	line = get_next_line(fd);
 	while (line)
