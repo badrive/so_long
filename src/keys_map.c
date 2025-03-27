@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 13:32:52 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/23 13:51:46 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/27 12:42:27 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	draw_black_rectangle(t_data *game, int x, int y)
 {
 	int (i), (j);
 	i = 0;
-	while (i < TILE_SIZE)
+	while (i < 64)
 	{
 		j = 0;
-		while (j < TILE_SIZE)
+		while (j < 64)
 		{
-			mlx_pixel_put(game->mlx, game->win, x * TILE_SIZE + i, y * TILE_SIZE
+			mlx_pixel_put(game->mlx, game->win, x * 64 + i, y * 64
 				+ j, 0x000000);
 			j++;
 		}
@@ -59,7 +59,7 @@ void	move_player(t_data *game, int new_x, int new_y)
 	game->player_x = new_x;
 	game->player_y = new_y;
 	mlx_put_image_to_window(game->mlx, game->win, game->img_player,
-		game->player_x * TILE_SIZE, game->player_y * TILE_SIZE);
+		game->player_x * 64, game->player_y * 64);
 	game->moves++;
 	ft_printf("Moves: %d\n", game->moves);
 }

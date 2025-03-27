@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:20:29 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/23 14:17:36 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/27 12:15:16 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-
-# define TILE_SIZE 64
 
 typedef struct s_data
 {

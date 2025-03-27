@@ -6,7 +6,7 @@
 /*   By: bfaras <bfaras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 16:03:48 by bfaras            #+#    #+#             */
-/*   Updated: 2025/03/22 20:57:34 by bfaras           ###   ########.fr       */
+/*   Updated: 2025/03/27 13:32:06 by bfaras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,6 @@
 void	ft_clean_and_load_textures(t_data *game)
 {
 	int (width), (height);
-	if (game->img_wall)
-		mlx_destroy_image(game->mlx, game->img_wall);
-	if (game->img_floor)
-		mlx_destroy_image(game->mlx, game->img_floor);
-	if (game->img_player)
-		mlx_destroy_image(game->mlx, game->img_player);
-	if (game->img_collectible)
-		mlx_destroy_image(game->mlx, game->img_collectible);
-	if (game->img_exit)
-		mlx_destroy_image(game->mlx, game->img_exit);
 	game->img_wall = mlx_xpm_file_to_image(game->mlx, "textures/stone.xpm",
 			&width, &height);
 	game->img_player = mlx_xpm_file_to_image(game->mlx, "textures/sonic.xpm",
@@ -37,8 +27,7 @@ void	ft_clean_and_load_textures(t_data *game)
 	if (!game->img_wall || !game->img_player || !game->img_collectible
 		|| !game->img_exit)
 	{
-		ft_free(game);
-		exit(1);
+		ft_error(game);
 	}
 }
 
